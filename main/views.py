@@ -35,7 +35,7 @@ def index(request):
             latitude = 51.50643
             longitude = -0.12719
             city = 'London'
-            error = 'Nieprawidlowa forma'
+            error = 'Nie znam takiego miasta'
         else:
             latitude = data['items'][0]['position']['lat']
             longitude = data['items'][0]['position']['lng']
