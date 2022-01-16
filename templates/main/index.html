@@ -1,0 +1,45 @@
+{%  extends 'main/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+
+    <div style=" width: 25%; background: #ccc; padding: 5px; padding-right: 20px; border: solid 1px black; float: right; margin: 4%; margin-right: 15%;">
+    <h2>Miasto</h2>
+    <form method="post">
+    {% csrf_token %}
+    {{ form.city }}<br>
+
+    <button type="submit" class="bnt btn-success">Szukaj</button>
+    <span>{{ error }}</span>
+    </form>
+    </div>
+
+    </div>
+
+
+       <div style="margin-top: 5%" class="col-4 offset-1">
+				<h2 style="margin-bottom: 25px">Pogoda: </h2>
+
+				{% for info in all_info %}
+				<div class="alert alert-success">
+					<div class="row">
+						<div class="col-8">
+							<b>Miasto: </b> {{info.0}} <br>
+                            <b>Data: </b> {{info.1}} <br>
+							<b>Temperatura: </b> {{info.2}}<sup>o</sup><br>
+                            <b>Temperatura w nocy: </b> {{info.3}}<sup>o</sup><br>
+                            <b>Prognoza: </b> {{info.4}} <br>
+
+						</div>
+						<div class="col-2 offset-1">
+							<img src="http://openweathermap.org/img/w/{{info.5}}.png" alt="photo_pogoda">
+						</div>
+					</div>
+				</div>
+
+                    {% endfor %}
+			</div>
+{% endblock %}
